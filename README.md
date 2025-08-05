@@ -1,0 +1,1 @@
+Just some configuration files for me to have a cool looking terminal
