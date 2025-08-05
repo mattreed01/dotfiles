@@ -1,5 +1,10 @@
 Just some configuration files for me to have a cool looking terminal
 
+# Usage
+## TMUX
+- Install all the prequisites
+- Clone this repo
+- Copy the `.tmux.conf` file into the home directory: `cp .tmux.conf ~/`
 # TMUX Cheatsheet
 - Leader/Prefix: <C-b>
 - New window: <C-b> c
@@ -18,5 +23,7 @@ Just some configuration files for me to have a cool looking terminal
 - tpm is required:
   - git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
   - Install plugins using <C-b> I
-- A nerd font be installed (I used Fira Code when writing this)
+  - Uninstall removed plugins: <C-b> <M> u
+  - Update plugins: <C-b> u
+- A nerd font must be installed (I used Fira Code when writing this)
   - [Nerd Font Glyphs](https://www.nerdfonts.com/cheat-sheet)
