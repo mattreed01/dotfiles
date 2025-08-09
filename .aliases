@@ -4,19 +4,15 @@ alias "open-zshrc"="code ~/.zshrc"
 alias "open-aliases"="code ~/.aliases"
 alias "src-shell"="source ~/.zshrc ~/.aliases"
 
+# Display
+alias cat="batcat --force-colorization"
+
 # Directory
 alias ls="eza --color=always --level=1 --tree --long --git --no-filesize --no-time --no-user --no-permissions"
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias fzf='fzf --preview="cat --color=always {}"'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Printing
-alias cat="batcat --force-colorization"
 
 # Navigation
 alias "goto-desktop"="cd ~/Desktop"
