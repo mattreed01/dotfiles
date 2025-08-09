@@ -148,17 +148,7 @@ fi
 export BAT_THEME="Visual Studio Dark+"
 
 ## fzf
-# Enable fzf keybindings (CTRL+T, ALT+C, CTRL+R) (apt)
-source /usr/share/doc/fzf/examples/key-bindings.bash
-# Enable fzf tab completion (apt)
-source /usr/share/doc/fzf/examples/completion.bash
-
-# FZF keybindings (CTRL+T, ALT+C, CTRL+R) (Homebrew)
-# source "$(brew --prefix)/opt/fzf/shell/key-bindings.bash"
-# FZF tab completion (Homebrew)
-# source "$(brew --prefix)/opt/fzf/shell/completion.bash"
-
-export FZF_CTRL_T_OPTS="--preview 'batcat -n --color=always --line-range :500 {}'"
+export FZF_CTRL_T_OPTS="--preview 'cat -n --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="eza --tree --color=always --level=2 {} | head -200"
 
 _fzf_comprun() {
@@ -169,7 +159,7 @@ _fzf_comprun() {
     cd) fzf --preview 'eza --tree --color=always --level=2 {} | head -200' "$@" ;;
     export|unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
     ssh) fzf --preview 'dig {}' "$@" ;;
-    *) fzf --preview 'batcat -n --color=always --line-range :500 {}' "$@" ;;
+    *) fzf --preview 'cat -n --color=always --line-range :500 {}' "$@" ;;
   esac
 }
 

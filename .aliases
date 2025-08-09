@@ -17,7 +17,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Printing
 alias cat="batcat --force-colorization"
-alias bat="batcat --force-colorization"
 
 # Navigation
 alias "goto-desktop"="cd ~/Desktop"
