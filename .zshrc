@@ -149,14 +149,14 @@ export BAT_THEME="Visual Studio Dark+"
 
 ## fzf
 export FZF_CTRL_T_OPTS="--preview 'cat -n --color=always --line-range :500 {}'"
-export FZF_ALT_C_OPTS="eza --tree --color=always --level=2 {} | head -200"
+export FZF_ALT_C_OPTS="ls -a --tree --color=always --level=2 {} | head -200"
 
 _fzf_comprun() {
   local command=$1
   shift
 
   case "$command" in
-    cd) fzf --preview 'eza --tree --color=always --level=2 {} | head -200' "$@" ;;
+    cd) fzf --preview 'ls -a --tree --color=always --level=2 {} | head -200' "$@" ;;
     export|unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
     ssh) fzf --preview 'dig {}' "$@" ;;
     *) fzf --preview 'cat -n --color=always --line-range :500 {}' "$@" ;;
