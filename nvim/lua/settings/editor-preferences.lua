@@ -1,6 +1,9 @@
 -- Auto Indent
 vim.o.autoindent = true
 
+-- Backspace
+vim.o.backspace = "indent,eol,start"
+
 -- Block Folding
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
@@ -38,6 +41,10 @@ vim.o.expandtab = true
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
+
+-- Terminal Colors
+vim.o.termguicolors = true
+vim.o.background = "dark"
 
 -- Window Pane Splitting
 vim.o.equalalways = true

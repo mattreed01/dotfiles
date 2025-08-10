@@ -29,6 +29,13 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live gr
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
+-- Which Key
+local function whichKey()
+  require("which-key").show({ global = false })
+end
+
+vim.keymap.set("n", "<C-?>" , whichKey, { desc = "Buffer local keymaps" })
+
 -- Windows & Tabs
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open tab" })
 vim.keymap.set("n", "<leader>tc", "<cmd>tabclose!<CR>", { desc = "Close tab" })
@@ -38,6 +45,7 @@ vim.keymap.set("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Go to previo
 vim.keymap.set("n", "<leader>wv", "<cmd>vs<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window split" })
+vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Equalize window splits" })
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
