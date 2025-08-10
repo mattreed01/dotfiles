@@ -13,3 +13,6 @@ require("settings.lsp-config")
 
 -- Key mappings
 require("settings.keymaps")
+
+-- Auto commands
+require("settings.auto-commands")
