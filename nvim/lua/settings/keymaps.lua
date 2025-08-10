@@ -1,3 +1,6 @@
+-- Lazygit
+vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+
 -- LSP
 local function format()
   vim.lsp.buf.format { async = true }
