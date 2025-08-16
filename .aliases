@@ -14,6 +14,9 @@ alias la='ls -A'
 alias l='ls -CF'
 alias fzf='fzf --preview="cat {}"'
 
+# Git
+alias lg="lazygit"
+
 # Navigation
 alias "goto-desktop"="cd ~/Desktop"
 alias "goto-documents"="cd ~/Documents"
