@@ -12,6 +12,9 @@ return {
     defaults = {
       file_ignore_patterns = {}
     },
+    extensions = {
+      fzf = {}
+    },
     pickers = {
       find_files = {
         hidden = true
