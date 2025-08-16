@@ -1,5 +1,3 @@
-local debounce = require("utils.debounce")
-
 local autosave_group = vim.api.nvim_create_augroup("autosave", { clear = true })
 local highlight_group = vim.api.nvim_create_augroup("highlight-yank", { clear = true })
 local lsp_attach_group = vim.api.nvim_create_augroup("lsp-attach", { clear = true })
@@ -45,13 +43,9 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertLeave" }, {
     local buffer = args.buf
 
     if vim.bo[buffer].buftype == "" then
-      debounce(
-        buffer,
-        vim.api.nvim_buf_call(buffer, function()
-          vim.cmd("silent! update")
-        end),
-        200
-      )
+      vim.api.nvim_buf_call(buffer, function()
+        vim.cmd("silent! update")
+      end)
     end
   end,
   desc = "Write after exiting insert mode",
