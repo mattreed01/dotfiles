@@ -34,7 +34,7 @@ local function whichKey()
   require("which-key").show({ global = false })
 end
 
-vim.keymap.set("n", "<C-?>" , whichKey, { desc = "Buffer local keymaps" })
+vim.keymap.set("n", "<C-?>", whichKey, { desc = "Buffer local keymaps" })
 
 -- Windows & Tabs
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open tab" })
@@ -42,6 +42,8 @@ vim.keymap.set("n", "<leader>tc", "<cmd>tabclose!<CR>", { desc = "Close tab" })
 vim.keymap.set("n", "<leader>tC", "<cmd>tabonly!<CR>", { desc = "Close all inactive tabs" })
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Go to next tab" })
 vim.keymap.set("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" })
+vim.keyma.set("n", "<leader>tR", "<cmd>tabm -1 <CR>", { desc = "Move tab backward" })
+vim.keyma.set("n", "<leader>tr", "<cmd>tabm +1 <CR>", { desc = "Move tab forward" })
 vim.keymap.set("n", "<leader>wv", "<cmd>vs<CR>", { desc = "Split window vertically" })
 vim.keymap.set("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window split" })
