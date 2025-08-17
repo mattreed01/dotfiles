@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertLeave" }, {
 
     if vim.bo[buffer].buftype == "" then
       vim.api.nvim_buf_call(buffer, function()
-        vim.cmd("silent! update")
+        vim.cmd("silent! write")
       end)
     end
   end,

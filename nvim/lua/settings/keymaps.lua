@@ -1,65 +1,81 @@
+local ts_filtered_grep = require('extensions.telescope.filtered-grep')
+local ts_builtin = require('telescope.builtin')
+local which_key = require('which-key')
+
+local lsp_buf = vim.lsp.buf
+
+local format = function()
+  vim.lsp.buf.format({ async = true })
+end
+
+local map_key = function(mode, key, map, opts)
+  vim.keymap.set(mode, key, map, opts)
+end
+
+local show_which_key = function()
+  which_key.show({ global = false })
+end
+
 -- Lazygit
-vim.keymap.set("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
+map_key("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 
 -- LSP
-local function format()
-  vim.lsp.buf.format { async = true }
-end
-
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover tooltip" })
-vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
-vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
-vim.keymap.set("n", "<leader>td", vim.lsp.buf.type_definition, { desc = "Show type definition" })
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Show code actions" })
-vim.keymap.set("n", "<leader>F", format, { desc = "Format file" })
+map_key("n", "K", lsp_buf.hover, { desc = "Show hover tooltip" })
+map_key("n", "<leader>gD", lsp_buf.declaration, { desc = "Go to declaration" })
+map_key("n", "<leader>gd", ts_builtin.lsp_definition, { desc = "Go to definition (Telescope)" })
+map_key("n", "<leader>gi", ts_builtin.lsp_implementation, { desc = "Go to implementation (Telescope)" })
+map_key("n", "<leader>td", ts_builtin.lsp_type_definition, { desc = "Show type definition (Telescope)" })
+map_key("n", "<leader>tr", ts_builtin.lsp_references, { desc = "Show references (Telescope)" })
+map_key({ "n", "v" }, "<leader>ca", lsp_buf.code_action, { desc = "Show code actions" })
+map_key("n", "<leader>F", format, { desc = "Format file" })
 
 -- Neotree
-vim.keymap.set("n", "<leader>e", "<cmd>Neotree filesystem reveal right<CR>", { desc = "Open explorer" })
-vim.keymap.set("n", "<leader>ec", "<cmd>Neotree filesystem action=close<CR>", { desc = "Close explorer" })
+map_key("n", "<leader>e", "<cmd>Neotree filesystem reveal right<CR>", { desc = "Open explorer" })
+map_key("n", "<leader>ec", "<cmd>Neotree filesystem action=close<CR>", { desc = "Close explorer" })
 
 -- Searching
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights on search" })
+map_key("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights on search" })
 
 -- Telescope
-local builtin = require("telescope.builtin")
-local filteredGrep = require("extensions.telescope.filtered-grep")
-
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
-vim.keymap.set("n", "<leader>fg", filteredGrep.grep, { desc = "Extended telescope live filtered grep" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+map_key("n", "<leader>ff", ts_builtin.find_files, { desc = "Telescope find files" })
+map_key("n", "<leader>fg", ts_filtered_grep.grep, { desc = "Extended telescope live filtered grep" })
+map_key("n", "<leader>fb", ts_builtin.buffers, { desc = "Telescope buffers" })
+map_key("n", "<leader>fc", ts_builtin.current_buffer_fuzzy_find, { desc = "Telescope find in current buffer" })
+map_key("n", "<leader>fh", ts_builtin.help_tags, { desc = "Telescope help tags" })
+map_key("n", "<leader>fl", ts_builtin.loclist, { desc = "Telescope open location list" })
+map_key("n", "<leader>fq", ts_builtin.quickfix, { desc = "Telescope open quickfix list" })
 
 -- Trouble
-vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
-vim.keymap.set("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
-  { desc = "Buffer Diagnostics (Trouble)" })
-vim.keymap.set("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<CR>", { desc = "Symbols (Trouble)" })
-vim.keymap.set("n", "<leader>cl", "<cmd>Trouble lsp toggle focuse=false  win.position=bottom<CR>",
-  { desc = "LSP Definitions / References / ... (Trouble)" })
-vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle<CR>", { desc = "Location List(Trouble)" })
-vim.keymap.set("n", "<leader>xQ", "<cmd>Trouble qflist toggle<CR>", { desc = "Quickfix List (Trouble)" })
+map_key("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
+map_key("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", { desc = "Buffer Diagnostics (Trouble)" })
+map_key("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=true<CR>", { desc = "Symbols (Trouble)" })
+map_key(
+  "n",
+  "<leader>cl",
+  "<cmd>Trouble lsp toggle focuse=true  win.position=bottom<CR>",
+  { desc = "LSP Definitions / References / ... (Trouble)" }
+)
+map_key("n", "<leader>xl", "<cmd>Trouble loclist toggle<CR>", { desc = "Location List(Trouble)" })
+map_key("n", "<leader>xQ", "<cmd>Trouble qflist toggle focus=true<CR>", { desc = "Quickfix List (Trouble)" })
 
 -- Which Key
-local function whichKey()
-  require("which-key").show({ global = false })
-end
-
-vim.keymap.set("n", "<C-?>", whichKey, { desc = "Buffer local keymaps" })
+map_key("n", "<C-?>", show_which_key, { desc = "Buffer local keymaps" })
 
 -- Windows & Tabs
-vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open tab" })
-vim.keymap.set("n", "<leader>tc", "<cmd>tabclose!<CR>", { desc = "Close tab" })
-vim.keymap.set("n", "<leader>tC", "<cmd>tabonly!<CR>", { desc = "Close all inactive tabs" })
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Go to next tab" })
-vim.keymap.set("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" })
-vim.keymap.set("n", "<leader>tR", "<cmd>tabm -1 <CR>", { desc = "Move tab backward" })
-vim.keymap.set("n", "<leader>tr", "<cmd>tabm +1 <CR>", { desc = "Move tab forward" })
-vim.keymap.set("n", "<leader>wv", "<cmd>vs<CR>", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split window horizontally" })
-vim.keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window split" })
-vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Equalize window splits" })
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map_key("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open tab" })
+map_key("n", "<leader>tc", "<cmd>tabclose!<CR>", { desc = "Close tab" })
+map_key("n", "<leader>tC", "<cmd>tabonly!<CR>", { desc = "Close all inactive tabs" })
+map_key("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Go to next tab" })
+map_key("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" })
+map_key("n", "<leader>tR", "<cmd>tabm -1 <CR>", { desc = "Move tab backward" })
+map_key("n", "<leader>tr", "<cmd>tabm +1 <CR>", { desc = "Move tab forward" })
+map_key("n", "<leader>wv", "<cmd>vs<CR>", { desc = "Split window vertically" })
+map_key("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split window horizontally" })
+map_key("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window split" })
+map_key("n", "<leader>w=", "<C-w>=", { desc = "Equalize window splits" })
+map_key("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map_key("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map_key("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map_key("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map_key("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map_key("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })

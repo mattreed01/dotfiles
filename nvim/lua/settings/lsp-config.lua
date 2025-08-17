@@ -1,9 +1,15 @@
-vim.lsp.enable("bashls")
-vim.lsp.enable("biome")
-vim.lsp.enable("html")
-vim.lsp.enable("jsonls")
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("prismals")
-vim.lsp.enable("tailwindcss")
-vim.lsp.enable("ts_ls")
-vim.lsp.enable("vimls")
+local lsps_to_enable = {
+  "bashls",
+  "biome",
+  "html",
+  "jsonls",
+  "lua_ls",
+  "prismals",
+  "tailwindcss",
+  "ts_ls",
+  "vimls"
+}
+
+for _, lsp in pairs(lsps_to_enable) do
+  vim.lsp.enable(lsp)
+end

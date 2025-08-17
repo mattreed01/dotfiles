@@ -1,45 +1,47 @@
+local opts = vim.o
+
 -- Auto Indent
-vim.o.autoindent = true
+opts.autoindent = true
 
 -- Backspace
-vim.o.backspace = "indent,eol,start"
+opts.backspace = "indent,eol,start"
 
 -- Block Folding
-vim.o.foldmethod = "indent"
-vim.o.foldlevel = 5
+opts.foldmethod = "indent"
+opts.foldlevel = 5
 
 -- Copy + Paste Clipboard
 vim.schedule(function()
-  vim.o.clipboard = "unnamedplus"
+  opts.clipboard = "unnamedplus"
 end)
 
 -- Line Numbers
-vim.o.number = true
-vim.o.relativenumber = true
+opts.number = true
+opts.relativenumber = true
 
 -- Mouse Mode
-vim.o.mouse = "a"
+opts.mouse = "a"
 
 -- Searching
-vim.o.ignorecase = true
-vim.o.smartcase = true
+opts.ignorecase = true
+opts.smartcase = true
 
 -- Sign Column
-vim.o.signcolumn = 'yes'
+opts.signcolumn = 'yes'
 
 -- Tabs & Spaces
-vim.o.expandtab = true
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
+opts.expandtab = true
+opts.tabstop = 2
+opts.softtabstop = 2
+opts.shiftwidth = 2
 
 -- Terminal Colors
-vim.o.termguicolors = true
-vim.o.background = "dark"
+opts.termguicolors = true
+opts.background = "dark"
 
 -- Window Pane Splitting
-vim.o.equalalways = true
-vim.o.splitright = true
-vim.o.splitbelow = true
-vim.o.showtabline = 1    -- 0: Never | 1: When there is more than one tab | 2: Always
+opts.equalalways = true
+opts.splitright = true
+opts.splitbelow = true
+opts.showtabline = 1     -- 0: Never | 1: When there is more than one tab | 2: Always
 vim.tabclose = "uselast" -- left: Previous tab | uselast: Opens last opened tab
