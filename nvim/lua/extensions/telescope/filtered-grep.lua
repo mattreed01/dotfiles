@@ -1,8 +1,8 @@
 local conf = require("telescope.config")
-local finders = require('telescope.finders')
-local make_entry = require('telescope.make_entry')
-local pickers = require('telescope.pickers')
-local sorters = require('telescope.sorters')
+local finders = require("telescope.finders")
+local make_entry = require("telescope.make_entry")
+local pickers = require("telescope.pickers")
+local sorters = require("telescope.sorters")
 
 local M = {}
 

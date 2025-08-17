@@ -1,7 +1,16 @@
+local ts_omnifunc = require('extensions.telescope.omnifunc')
+
 local autosave_group = vim.api.nvim_create_augroup("autosave", { clear = true })
 local highlight_group = vim.api.nvim_create_augroup("highlight-yank", { clear = true })
 local lsp_attach_group = vim.api.nvim_create_augroup("lsp-attach", { clear = true })
 local lsp_autoformat_group = vim.api.nvim_create_augroup("lsp-autoformat", { clear = true })
+
+local ts_auto_complete = function()
+  vim.schedule(function()
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+    ts_omnifunc.auto_complete()
+  end)
+end
 
 -- Format on save
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -18,6 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             bufnr = args.buf,
             id = client.id
           })
+          vim.keymap.set("i", "<M-]>", ts_auto_complete, { desc = "Extended telescope omnifunc", noremap = true })
         end,
         desc = "Auto format before write",
         group = lsp_autoformat_group
