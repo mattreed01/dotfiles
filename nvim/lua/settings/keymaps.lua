@@ -44,6 +44,7 @@ map_key("n", "<leader>fc", ts_builtin.current_buffer_fuzzy_find, { desc = "Teles
 map_key("n", "<leader>fh", ts_builtin.help_tags, { desc = "Telescope help tags" })
 map_key("n", "<leader>fl", ts_builtin.loclist, { desc = "Telescope open location list" })
 map_key("n", "<leader>fq", ts_builtin.quickfix, { desc = "Telescope open quickfix list" })
+map_key("n", "<leader>fs", ts_builtin.grep_string, { desc = "Telescope find string under cursor" })
 
 -- Trouble
 map_key("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
@@ -67,8 +68,8 @@ map_key("n", "<leader>tc", "<cmd>tabclose!<CR>", { desc = "Close tab" })
 map_key("n", "<leader>tC", "<cmd>tabonly!<CR>", { desc = "Close all inactive tabs" })
 map_key("n", "<leader>tn", "<cmd>tabnext<CR>", { desc = "Go to next tab" })
 map_key("n", "<leader>tp", "<cmd>tabprevious<CR>", { desc = "Go to previous tab" })
-map_key("n", "<leader>tR", "<cmd>tabm -1 <CR>", { desc = "Move tab backward" })
-map_key("n", "<leader>tr", "<cmd>tabm +1 <CR>", { desc = "Move tab forward" })
+map_key("n", "<leader>tml", "<cmd>tabm -1 <CR>", { desc = "Move tab backward" })
+map_key("n", "<leader>tmr", "<cmd>tabm +1 <CR>", { desc = "Move tab forward" })
 map_key("n", "<leader>wv", "<cmd>vs<CR>", { desc = "Split window vertically" })
 map_key("n", "<leader>wh", "<cmd>split<CR>", { desc = "Split window horizontally" })
 map_key("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close window split" })
