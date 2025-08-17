@@ -5,8 +5,7 @@ vim.o.autoindent = true
 vim.o.backspace = "indent,eol,start"
 
 -- Block Folding
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldmethod = "indent"
 vim.o.foldlevel = 5
 
 -- Copy + Paste Clipboard

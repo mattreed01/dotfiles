@@ -9,6 +9,21 @@ return {
     },
     lazy = false,
     opts = {
+      default_component_configs = {
+        git_status = {
+          symbols = {
+            added     = "✚",
+            deleted   = "✖",
+            modified  = "",
+            renamed   = "󰁕",
+            untracked = "",
+            ignored   = "",
+            unstaged  = "󰄱",
+            staged    = "",
+            conflict  = "",
+          }
+        }
+      },
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
