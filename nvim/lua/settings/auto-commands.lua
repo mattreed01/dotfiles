@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if not client then return end
 
     if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_create_autocmd("BufWritePre", {
+      vim.api.nvim_create_autocmd({ "BufWritePre", "BufLeave", "FocusLost", "InsertLeave" }, {
         buffer = args.buf,
         callback = function()
           vim.lsp.buf.format({
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertLeave" }, {
 
     if vim.bo[buffer].buftype == "" then
       vim.api.nvim_buf_call(buffer, function()
-        vim.cmd("silent! write")
+        vim.cmd("silent! update")
       end)
     end
   end,
