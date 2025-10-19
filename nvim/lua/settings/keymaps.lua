@@ -2,6 +2,8 @@ local ts_filtered_grep = require('extensions.telescope.filtered-grep')
 local ts_builtin = require('telescope.builtin')
 local which_key = require('which-key')
 
+local ext_help_tags = require('extensions.telescope.help-tags')
+
 local lsp_buf = vim.lsp.buf
 
 local format = function()
@@ -41,7 +43,7 @@ map_key("n", "<leader>ff", ts_builtin.find_files, { desc = "Telescope find files
 map_key("n", "<leader>fg", ts_filtered_grep.grep, { desc = "Extended telescope live filtered grep" })
 map_key("n", "<leader>fb", ts_builtin.buffers, { desc = "Telescope buffers" })
 map_key("n", "<leader>fc", ts_builtin.current_buffer_fuzzy_find, { desc = "Telescope find in current buffer" })
-map_key("n", "<leader>fh", ts_builtin.help_tags, { desc = "Telescope help tags" })
+map_key("n", "<leader>fh", ext_help_tags.help_tags, { desc = "(Extended) Telescope help tags" })
 map_key("n", "<leader>fl", ts_builtin.loclist, { desc = "Telescope open location list" })
 map_key("n", "<leader>fq", ts_builtin.quickfix, { desc = "Telescope open quickfix list" })
 map_key("n", "<leader>fs", ts_builtin.grep_string, { desc = "Telescope find string under cursor" })
