@@ -17,7 +17,8 @@ return {
     },
     pickers = {
       find_files = {
-        hidden = true
+        hidden = true,
+        no_ignore = true
       }
     }
   }
