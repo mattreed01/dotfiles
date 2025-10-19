@@ -2,6 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "folke/lazydev.nvim",
+    'saghen/blink.cmp',
     ft = "lua",
     opts = {
       library = {
@@ -13,4 +14,3 @@ return {
     },
   }
 }
-
