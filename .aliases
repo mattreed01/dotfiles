@@ -23,6 +23,9 @@ alias "goto-documents"="cd ~/Documents"
 alias "goto-projects"="cd ~/Documents/projects"
 alias "goto-arcadia"="cd ~/Documents/projects/arcadia"
 
+# Neovim
+alias "nvim-clean"="rm -rf ~/.cache/nvim && rm -rf ~/.local/share/nvim && rm -rf ~/.config/nvim"
+
 # Postgres (if installed through apt)
 alias "pgsql-status"="sudo systemctl status postgresql"
 alias "pgsql-restart"="sudo systemctl restart postgresql"
