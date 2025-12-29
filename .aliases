@@ -1,7 +1,7 @@
 # bash
-alias "open-bashrc"="code ~/.bashrc"
-alias "open-zshrc"="code ~/.zshrc"
-alias "open-aliases"="code ~/.aliases"
+alias "open-bashrc"="nvim ~/.bashrc"
+alias "open-zshrc"="nvim ~/.zshrc"
+alias "open-aliases"="nvim ~/.aliases"
 alias "src-shell"="source ~/.zshrc ~/.aliases"
 
 # Display
@@ -35,4 +35,4 @@ alias "pgsql-kill"="sudo systemctl kill postgresql"
 alias "pgsql-open-as-admin"="sudo -u postgres psql"
 
 # TMUX
-alias "open-tmux"="code ~/.tmux.conf"
+alias "open-tmux"="nvim ~/.tmux.conf"

@@ -148,6 +148,7 @@ fi
 export BAT_THEME="Visual Studio Dark+"
 
 ## fzf
+[ -f ~/fzf.zsh ] && source ~/.fzf.zsh
 export FZF_CTRL_T_OPTS="--preview 'cat -n --line-range :500 {}'"
 export FZF_ALT_C_OPTS="ls -a --tree --color=always --level=2 {} | head -200"
 
